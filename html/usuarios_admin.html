@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panel de administración para gestión de usuarios del CineRestaurante Club">
+    <meta name="keywords" content="admin, usuarios, gestión, panel, cine, restaurante">
+    <meta name="author" content="Film&Food">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Gestión de Usuarios - Panel Admin</title>
+    <link rel="stylesheet" href="../css/usuarios_admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="../img/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="../img/logo.png">
+</head>
+<body>
+    <header class="admin-header">
+        <div class="container">
+            <h1>Panel de Administración - Gestión de Usuarios</h1>
+            <p id="bienvenida">Buen día Admin</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="admin-nav" role="navigation" aria-label="Navegación principal">
+        <a href="panel.html" class="nav-link">
+            <i class="fas fa-home"></i> Panel Principal
+        </a>
+        <a href="usuarios_admin.html" class="nav-link active">
+            <i class="fas fa-users"></i> Usuarios
+        </a>
+        <a href="platos_admin.html" class="nav-link">
+            <i class="fas fa-utensils"></i> Platos
+        </a>
+        <a href="peliculas_admin.html" class="nav-link">
+            <i class="fas fa-film"></i> Películas
+        </a>
+        <a href="mesas_reservas_admin.html" class="nav-link">
+            <i class="fas fa-chair"></i> Mesas & Reservas
+        </a>
+        <a href="reportes_admin.html" class="nav-link">
+            <i class="fas fa-chart-bar"></i> Reportes
+        </a>
+        <a href="panel_mozo.html" class="nav-link">
+            <i class="fas fa-concierge-bell"></i> Panel Mozo
+        </a>
+        <a href="panel_cocina.html" class="nav-link">
+            <i class="fas fa-utensils"></i> Panel Cocina
+        </a>
+    </nav>
+
+    <main role="main">
+        <section class="bloque" aria-labelledby="usuarios-title">
+            <h2 id="usuarios-title">👥 Usuarios registrados</h2>
+            <div id="tablaUsuarios" role="region" aria-label="Lista de usuarios">Usuarios</div>
+        </section>
+
+        <section class="editcontenido" id="editUsuario" aria-labelledby="editar-title" style="display: none;">
+            <h2 id="editar-title">Editar Usuario</h2>
+            <form id="editarUsuario" class="editarUsuario" role="form" aria-label="Formulario de edición de usuario">
+                <div class="form-group">
+                    <label for="idEditar">ID del usuario:</label>
+                    <input type="number" id="idEditar" min="1" required readonly aria-describedby="id-help">
+                    <small id="id-help" class="sr-only">ID numérico del usuario a editar (solo lectura)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="nuevoNombre">Nombre completo:</label>
+                    <input type="text" id="nuevoNombre" aria-describedby="nombre-help" placeholder="Ingrese el nuevo nombre">
+                    <small id="nombre-help" class="sr-only">Ingrese el nuevo nombre completo del usuario</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="nuevoEmail">Correo electrónico:</label>
+                    <input type="email" id="nuevoEmail" aria-describedby="email-help" placeholder="Ingrese el nuevo email">
+                    <small id="email-help" class="sr-only">Ingrese la nueva dirección de correo electrónico</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="nuevoTipo">Tipo de usuario:</label>
+                    <select id="nuevoTipo" aria-describedby="tipo-help">
+                        <option value="cliente">Cliente</option>
+                        <option value="admin">Administrador</option>
+                        <option value="mozo">Mozo</option>
+                        <option value="cocina">Cocina</option>
+                    </select>
+                    <small id="tipo-help" class="sr-only">Seleccione el nuevo rol del usuario</small>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" id="btnActualizarUsuario" aria-describedby="submit-help">
+                        <i class="fas fa-save"></i> Actualizar Usuario
+                    </button>
+                    <button type="button" onclick="cancelarEdicion()" id="btnCancelarEdicion" aria-label="Cancelar edición">
+                        <i class="fas fa-times"></i> Cancelar
+                    </button>
+                </div>
+                <small id="submit-help" class="sr-only">Haga clic para guardar los cambios del usuario</small>
+                <p id="mensajeConfirmacionUsuario" class="mensaje-error" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <button id="cerrarSesionBtn" aria-label="Cerrar sesión del sistema">Cerrar sesión</button>
+    </footer>
+
+    <script src="../js/checkadmin.js"></script>
+    <script src="../js/usuarios.js"></script>
+    <script src="../js/logout.js"></script>
+</body>
+</html>

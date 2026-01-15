@@ -1,0 +1,251 @@
+/* Estilos para la página de login admin */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.login-background {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-simple {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.brand-link {
+    text-decoration: none;
+    color: #fff;
+}
+
+.brand-link h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: #ecf0f1;
+}
+
+.login-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+}
+
+.login-container {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.card-header {
+    background-color: #3498db;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+.card-title {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+form {
+    padding: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.alert {
+    padding: 0.75rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    display: none;
+}
+
+.alert-error {
+    background-color: #e74c3c;
+    color: white;
+    border: 1px solid #c0392b;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    position: relative;
+}
+
+.btn-secondary {
+    background-color: #3498db;
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.btn-secondary:hover {
+    background-color: #2980b9;
+}
+
+.btn-text {
+    display: inline;
+}
+
+.btn-loading {
+    display: none;
+}
+
+.footer-simple {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 1rem 0;
+    text-align: center;
+    color: #ecf0f1;
+}
+
+.footer-simple p {
+    margin: 0;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - ADMIN LOGIN
+   ============================================ */
+
+/* Tablets (hasta 768px) */
+@media (max-width: 768px) {
+    .login-container {
+        padding: 1.5rem;
+        max-width: 90%;
+    }
+
+    .brand-link h1 {
+        font-size: 1.5rem;
+    }
+
+    .card-title {
+        font-size: 1.3rem;
+    }
+
+    .login-wrapper {
+        padding: 1.5rem 1rem;
+    }
+}
+
+/* Móviles (hasta 480px) */
+@media (max-width: 480px) {
+    .header-simple {
+        padding: 0.8rem 0;
+    }
+
+    .header-content {
+        padding: 0 0.8rem;
+    }
+
+    .brand-link h1 {
+        font-size: 1.3rem;
+    }
+
+    .login-wrapper {
+        padding: 1rem 0.8rem;
+    }
+
+    .login-container {
+        padding: 1.2rem;
+        border-radius: 8px;
+    }
+
+    .card-header {
+        padding: 0.8rem;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+    }
+
+    form {
+        padding: 1rem;
+    }
+
+    .form-control {
+        padding: 0.65rem;
+        font-size: 0.95rem;
+    }
+
+    .btn-secondary {
+        padding: 0.65rem 1.2rem;
+        font-size: 0.95rem;
+    }
+
+    .footer-simple {
+        padding: 0.8rem 0;
+        font-size: 0.9rem;
+    }
+}
+
+/* Pantallas muy pequeñas (hasta 360px) */
+@media (max-width: 360px) {
+    .login-container {
+        padding: 1rem;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+    }
+
+    .form-control {
+        font-size: 0.9rem;
+    }
+}

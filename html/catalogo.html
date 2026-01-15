@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Catálogo - Leskchamps">
+    <meta name="keywords" content="productos, tienda, compras, calidad, Leskchamps">
+    <meta name="author" content="Leskchamps">
+    <meta name="robots" content="index, follow">
+    <title>Catálogo - Leskchamps</title>
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body class="main-background">
+    <!-- Header Simple -->
+    <header class="header-simple" role="banner">
+        <div class="header-content">
+            <div class="brand-section">
+                <a href="index.html" class="brand-link" aria-label="Ir a la página principal">
+                    <h1>Leskchamps</h1>
+                </a>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Menú de navegación" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="main-nav" id="mainNav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="quienes.html">Quiénes Somos</a></li>
+                    <li><a href="#" onclick="showSection('contacto'); closeMobileMenu();">Contacto</a></li>
+                </ul>
+            </nav>
+            <div id="cart-icon" class="cart-icon" onclick="showCart()">
+                🛒 <span id="cart-count" class="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <main role="main" class="main-content">
+        <section id="catalogo" class="page-section">
+            <div class="productos-section magic-card fade-in-up">
+                <h2 class="section-title">Nuestro Catálogo Exclusivo</h2>
+                <p class="section-subtitle">Productos seleccionados con cuidado para ti</p>
+                <?php include '../php/listarProductos.php'; ?>
+            </div>
+        </section>
+
+
+        <section id="contacto" class="page-section" style="display: none;">
+            <div class="productos-section magic-card fade-in-up">
+                <h2>Contacto</h2>
+                <p>Estamos ubicados en El Pinar, Canelones, Uruguay.</p>
+                <p>Email: info@tiendaonline.com</p>
+                <p>Teléfono: +598 092 037 792</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Simple -->
+    <footer class="footer-simple" role="contentinfo">
+        <div class="footer-content">
+            <p>&copy; 2024 Leskchamps. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-modal-content">
+            <h2>Carrito de Compras</h2>
+            <div id="cart-items"></div>
+            <div id="cart-total" class="cart-total"></div>
+            <div class="cart-buttons">
+                <button onclick="closeCart()" class="btn-cart btn-close">Cerrar</button>
+                <button id="order-btn" onclick="placeOrder()" class="btn-cart btn-order">Ordenar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/menu.js"></script>
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function updateCartCount() {
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count').textContent = count;
+        }
+
+        function addToCart(id, name, price) {
+            const existing = cart.find(item => item.id === id);
+            if (existing) {
+                existing.quantity++;
+            } else {
+                cart.push({ id, name, price, quantity: 1 });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            alert('Producto añadido al carrito');
+        }
+
+        function showCart() {
+            const modal = document.getElementById('cart-modal');
+            const itemsDiv = document.getElementById('cart-items');
+            const totalDiv = document.getElementById('cart-total');
+
+            itemsDiv.innerHTML = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                itemsDiv.innerHTML += `
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; padding: 0.5rem; border-bottom: 1px solid #eee;">
+                        <div>
+                            <strong>${item.name}</strong><br>
+                            $${item.price} x ${item.quantity} = $${itemTotal.toFixed(2)}
+                        </div>
+                        <button onclick="removeFromCart(${index})" style="background: #e74c3c; color: white; border: none; padding: 0.2rem 0.5rem; border-radius: 3px; cursor: pointer;">X</button>
+                    </div>
+                `;
+            });
+
+            totalDiv.textContent = `Total: $${total.toFixed(2)}`;
+            modal.style.display = 'flex';
+        }
+
+        function closeCart() {
+            document.getElementById('cart-modal').style.display = 'none';
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            showCart();
+        }
+
+        function placeOrder() {
+            if (cart.length === 0) {
+                alert('El carrito está vacío');
+                return;
+            }
+
+            let message = 'Hola, quiero ordenar los siguientes productos:\n\n';
+            let total = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                message += `${item.name} - $${item.price} x ${item.quantity} = $${itemTotal.toFixed(2)}\n`;
+            });
+
+            message += `\nTotal: $${total.toFixed(2)}\n\nGracias!`;
+
+            const whatsappUrl = `https://wa.me/59892037792?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('catalogo');
+            updateCartCount();
+        });
+    </script>
+</body>
+</html>

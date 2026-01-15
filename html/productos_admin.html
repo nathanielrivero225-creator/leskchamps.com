@@ -1,0 +1,55 @@
+<?php
+session_start();
+if (!isset($_SESSION['admin_id'])) {
+    header('Location: admin_login.html');
+    exit;
+}
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrar Productos - Tienda Online</title>
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body class="admin-body">
+    <header class="header-simple">
+        <div class="header-content">
+            <h1>Administrar Productos</h1>
+            <a href="../php/logout.php">Cerrar Sesión</a>
+        </div>
+    </header>
+
+    <main class="admin-main">
+        <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+            <div class="success-message">
+                ✓ Producto agregado exitosamente. Puedes agregar otro producto.
+            </div>
+        <?php endif; ?>
+        <section class="productos-section">
+            <div class="productos-grid">
+                <div class="producto card-agregar">
+                    <h3>Agregar Nuevo Producto</h3>
+                    <?php include '../php/agregarProducto.php'; ?>
+                </div>
+            </div>
+        </section>
+
+        <section class="productos-section">
+            <h2 class="section-title">Productos Existentes</h2>
+            <div class="productos-grid">
+                <?php include '../php/listarProductos.php'; ?>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-simple">
+        <div class="footer-content">
+            <p>&copy; 2024 Tienda Online. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="../js/eliminar.js"></script>
+</body>
+</html>

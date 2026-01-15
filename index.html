@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página Principal - Tienda Online">
+    <meta name="keywords" content="productos, tienda, compras, calidad">
+    <meta name="author" content="Tienda Online">
+    <meta name="robots" content="index, follow">
+    <title>Tienda Online - Página Principal</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="icon" href="img/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="img/logo.png">
+</head>
+<body class="main-background">
+    <!-- Header Simple -->
+    <header class="header-simple" role="banner">
+        <div class="header-content">
+            <div class="brand-section">
+                <a href="index.php" class="brand-link" aria-label="Ir a la página principal">
+                    <h1>Tienda Online</h1>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main role="main" class="main-content">
+        <section class="hero-section">
+            <h1>¡Bienvenido a Nuestra Tienda Online!</h1>
+            <p>Descubre una amplia selección de productos de calidad para satisfacer todas tus necesidades. Nuestros administradores gestionan el catálogo para ofrecerte lo mejor.</p>
+            <a href="html/admin_login.html" class="cta-button">Acceder como Administrador</a>
+        </section>
+
+        <section class="productos-section">
+            <h2>Nuestros Productos</h2>
+            <div class="productos-grid">
+                <?php include 'php/listarProductos.php'; ?>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Simple -->
+    <footer class="footer-simple" role="contentinfo">
+        <div class="footer-content">
+            <p>&copy; 2024 Tienda Online. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</html>

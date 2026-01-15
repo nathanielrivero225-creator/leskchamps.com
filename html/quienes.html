@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Quiénes Somos - Leskchamps">
+    <meta name="keywords" content="quienes somos, tienda, ubicacion, historia, Leskchamps">
+    <meta name="author" content="Leskchamps">
+    <meta name="robots" content="index, follow">
+    <title>Quiénes Somos - Leskchamps</title>
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body class="main-background">
+    <!-- Header Simple -->
+    <header class="header-simple" role="banner">
+        <div class="header-content">
+            <div class="brand-section">
+                <a href="index.html" class="brand-link" aria-label="Ir a la página principal">
+                    <h1>Leskchamps</h1>
+                </a>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Menú de navegación" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="main-nav" id="mainNav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="quienes.html">Quiénes Somos</a></li>
+                    <li><a href="#" onclick="showSection('contacto'); closeMobileMenu();">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main role="main" class="main-content">
+        <section id="quienes-somos" class="page-section">
+            <div class="productos-section magic-card fade-in-up">
+                <h2 class="section-title quienes-title">🌟 Quiénes Somos 🌟</h2>
+                <p class="section-subtitle">Conoce nuestra historia y compromiso con la calidad</p>
+
+                <div class="quienes-content">
+                    <div class="quienes-grid">
+                        <div class="quienes-card">
+                            <h3>Nuestra Historia</h3>
+                            <p>Fundada en 2025, Leskchamps nació con la visión de revolucionar la forma en que los uruguayos acceden a productos de calidad. Comenzamos como un pequeño emprendimiento familiar y hemos crecido gracias a la confianza de nuestros clientes.</p>
+                        </div>
+
+                        <div class="quienes-card">
+                            <h3>Misión</h3>
+                            <p>Ofrecer productos de alta calidad, garantizando una experiencia de compra excepcional.</p>
+                        </div>
+                    </div>
+
+                    <div class="quienes-card quienes-card-full">
+                        <h3>Visión</h3>
+                        <p>Ser la tienda de referencia en Uruguay, expandiendo nuestro catálogo y brindando productos de calidad a todos nuestros clientes.</p>
+                    </div>
+
+                    <div class="quienes-card">
+                        <h3>¿Qué ofrecemos?</h3>
+                        <div class="quienes-offers">
+                            <div class="offer-item">Productos de calidad garantizada</div>
+                            <div class="offer-item">Envío rápido y seguro a todo el país</div>
+                            <div class="offer-item">Atención al cliente 24/7</div>
+                        </div>
+                    </div>
+
+                    <div class="quienes-grid">
+                        <div class="quienes-card">
+                            <h3>Equipo</h3>
+                            <p>Contamos con un equipo apasionado dedicados a seleccionar los mejores productos y brindar el mejor servicio.</p>
+                        </div>
+                    </div>
+
+                    <div class="quienes-card quienes-card-full">
+                        <h3>Nuestra Ubicación</h3>
+                        <p>Estamos ubicados en Ciudad de la costa, Uruguay. Nuestra sede central se encuentra en:</p>
+                        <address class="quienes-address">
+                            <strong>Leskchamps</strong><br>
+                            <span>El Pinar, Canelones</span><br>
+                            <span>Uruguay</span><br>
+                            <br>
+                            <strong>Horarios de Atención:</strong><br>
+                            <span>Lunes a Sábado: 8:00 - 20:00</span><br>
+                            <span>Domingos: Cerrado</span>
+                        </address>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="page-section" style="display: none;">
+            <div class="productos-section magic-card fade-in-up">
+                <h2>Contacto</h2>
+                <p>Estamos ubicados en El Pinar, Canelones, Uruguay.</p>
+                <p>Teléfono: +598 092 037 792</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Simple -->
+    <footer class="footer-simple" role="contentinfo">
+        <div class="footer-content">
+            <p>&copy; 2024 Leskchamps. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="../js/menu.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('quienes-somos');
+        });
+    </script>
+</body>
+</html>
